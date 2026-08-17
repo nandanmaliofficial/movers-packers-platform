@@ -75,7 +75,7 @@ app.use("/bookingquotes", bookingQuoteRouter);
 const PORT = process.env.PORT;
 
 const server = app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}/`);
+  console.log(process.env.BACKEND);
 });
 
 const shutdown = (signal) => {
