@@ -148,7 +148,7 @@ const LoginPage = () => {
           }, 4000);
         })
         .catch((err) => {
-          if (err.response?.status === 403) {
+          if (err?.response?.status === 403) {
             setAlert({ message: "Verify Your Email", type: "warningAlert" });
             setTimeout(() => {
               navigate("/verify-otp",{
@@ -157,7 +157,7 @@ const LoginPage = () => {
             },
           });
             }, 4000);
-          } else if (err.response?.status === 404) {
+          } else if (err?.response?.status === 404) {
             setAlert({ message: "User Not Found (Invalid Details)", type: "warningAlert" });
           } else {
             setAlert({ message: "Login Failed", type: "errorAlert" });
