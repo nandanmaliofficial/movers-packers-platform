@@ -331,11 +331,11 @@ const RegisterPage = () => {
 
         setTimeout(() => {
           //verify otp
-          navigate("/verify-otp", {
-            state: {
-              email: formData.email,
-            },
-          });
+          // navigate("/verify-otp", {
+          //   state: {
+          //     email: formData.email,
+          //   },
+          // });
 
           setFormData({
             name: "",

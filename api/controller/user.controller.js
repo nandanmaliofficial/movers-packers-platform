@@ -40,11 +40,11 @@ export const save = async(req,res)=>{
     
 
 
-    const UserDetails={...req.body,'_id':_id,'otp':otp,'otpExpires':otpExpires, ProfilePic:profile};
+    const UserDetails={...req.body,'_id':_id,'status':"true", 'otp':otp,'otpExpires':otpExpires, ProfilePic:profile};
 
     try{
       // Send OTP Email
-      await sendOTP(UserDetails.email, otp);
+      // await sendOTP(UserDetails.email, otp);
         await UserSchemaModel.create(UserDetails);
         if (profileicon) {
           const uploadPath = path.join(
