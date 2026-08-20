@@ -30,7 +30,10 @@ import { stripeWebhook } from "./controller/paymentController.js";
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin:[
+      "http://localhost:3000",
+      process.env.CLIENT_URL
+    ].filter(Boolean),
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
@@ -75,7 +78,7 @@ app.use("/bookingquotes", bookingQuoteRouter);
 const PORT = process.env.PORT;
 
 const server = app.listen(PORT, () => {
-  console.log(process.env.BACKEND);
+
 });
 
 const shutdown = (signal) => {

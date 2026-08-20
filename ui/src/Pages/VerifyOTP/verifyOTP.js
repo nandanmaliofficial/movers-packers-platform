@@ -139,7 +139,7 @@ return (
             </p>
             )
           : (
-            <button
+            <button type="button"
                 className="verifyBtn"
                  onClick={ handleResend }
             >

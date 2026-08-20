@@ -43,6 +43,8 @@ export const save = async(req,res)=>{
     const UserDetails={...req.body,'_id':_id,'otp':otp,'otpExpires':otpExpires, ProfilePic:profile};
 
     try{
+      // Send OTP Email
+      await sendOTP(UserDetails.email, otp);
         await UserSchemaModel.create(UserDetails);
         if (profileicon) {
           const uploadPath = path.join(
@@ -52,8 +54,6 @@ export const save = async(req,res)=>{
               );
           await profileicon.mv(uploadPath);
         }
-        // Send OTP Email
-        await sendOTP(UserDetails.email, otp);
         res.status(201).json({'success':true,UserDetails});
         
     }
@@ -260,6 +260,7 @@ export const resendOTP = async (req, res) => {
 
     } catch (error) {
 
+      console.log(error)
         res.status(500).json({
             message:
                 error.message,
